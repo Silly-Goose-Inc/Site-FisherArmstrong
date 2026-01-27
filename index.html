@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Fisher Armstrong</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Personal hub for Fisher Armstrong—projects, notes, and things in progress.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ink: #111;
+      --muted: #555;
+
+      --ahs: #d9642f;       /* darker orange */
+      --motor: #c9a800;     /* darker yellow */
+      --photo: #f49c9c;     /* lighter red */
+      --tech: #2f6fb2;
+      --bob: #6b5b95;       /* purpleish for Bob & Robert */
+
+      --hero-bg: #2e2a36;
+      --hero-text: #f5f3ef;
+
+      --btn-bg: #111;
+      --btn-text: #f5f3ef;
+      --btn-hover: #444;
+    }
+
+    html { font-size: 17px; }
+
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, sans-serif;
+      color: var(--ink);
+      line-height: 1.6;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(0,0,0,0.03), transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(0,0,0,0.025), transparent 45%),
+        repeating-linear-gradient(
+          0deg,
+          rgba(0,0,0,0.015),
+          rgba(0,0,0,0.015) 1px,
+          transparent 1px,
+          transparent 24px
+        ),
+        #f7f6f4;
+    }
+
+    h1, h2, h3, h4 { margin: 0; }
+
+    /* HERO BAND */
+    .hero-band {
+      background: var(--hero-bg);
+      color: var(--hero-text);
+      padding: 80px 20px;
+      text-align: center;
+    }
+    .hero-band h1 {
+      font-family: "Playfair Display", serif;
+      font-size: 3rem;
+      margin-bottom: 0.5em;
+    }
+    .hero-band p {
+      font-size: 1.05rem;
+      max-width: 640px;
+      margin: 0 auto 1.5rem;
+      color: var(--hero-text);
+    }
+    .hero-buttons {
+      margin-top: 1.5rem;
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .hero-buttons a {
+      background: var(--btn-bg);
+      color: var(--btn-text);
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    .hero-buttons a:hover {
+      background: var(--btn-hover);
+    }
+
+    /* MAIN GRID */
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 56px 28px 72px;
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 64px;
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+    }
+
+        /* Apply to all links */
+        a {
+        color: inherit;            /* use the color of the parent element */
+        text-decoration: none;     /* optional if you want no underline */
+        border-bottom: 2px solid currentColor; /* keeps subtle underline style */
+        }
+
+        a:visited, a:hover, a:active {
+        color: inherit;            /* ensures visited/hover links don't turn blue/purple */
+        text-decoration: none;     /* maintains your hover style */
+        }
+
+
+    /* PROJECTS LEFT */
+    ul { list-style: none; padding: 0; margin: 0; }
+    li { margin-bottom: 2.6rem; position: relative; }
+    a.project { font-weight: 600; font-size: 1.1rem; text-decoration: none; border-bottom: 2px solid currentColor; }
+    a.project:hover { opacity: 0.85; }
+    .desc { margin-top: 0.45rem; font-size: 0.95rem; color: var(--muted); max-width: 640px; }
+    .subset { margin-top: 1rem; padding-left: 1.2rem; border-left: 3px solid rgba(0,0,0,0.15); }
+    .subset li { margin-bottom: 0.9rem; }
+    .email-link {
+      position: absolute;
+      right: 0;
+      top: 0;
+      display: none !important;
+      align-items: center;
+      justify-content: center;
+      height: 32px;              /* uniform height */
+      min-width: 40px;           /* uniform min width */
+      padding: 0 10px;           /* consistent horizontal padding */
+      font-size: 0.95rem;        /* slightly larger text */
+      font-weight: 600;          /* stronger weight for uniform look */
+      text-decoration: none;
+      color: var(--muted);
+      border: 1.5px solid var(--muted);
+      border-radius: 6px;        /* slightly larger radius */
+      transition: background 0.3s, color 0.3s, border-color 0.3s;
+      line-height: 1;            /* avoid vertical overflow */
+      box-sizing: border-box;    /* include border in set height */
+      background: transparent;
+    }
+    .email-link:hover {
+      background: var(--muted);
+      color: #fff;
+      border-color: var(--muted);
+    }
+
+    /* Color coding */
+    .ahs { color: var(--ahs); }
+    .motor { color: var(--motor); }
+    .photo { color: var(--photo); }
+    .tech { color: var(--tech); }
+    .bob { color: var(--bob); }
+
+    /* RIGHT COLUMN */
+    aside { position: relative; padding-left: 24px; border-left: 1px solid rgba(0,0,0,0.15); }
+    aside h2 { font-size: 1.1rem; letter-spacing: 0.04em; text-transform: uppercase; color: #333; margin-bottom: 1.5rem; border-bottom: 2px solid #ccc; padding-bottom: 4px; }
+    .note { margin-bottom: 1.5rem; font-size: 0.95rem; color: #333; }
+    .note time { display: block; font-size: 0.75rem; color: #777; margin-bottom: 0.2rem; }
+
+    /* Blog section */
+    .blog { margin-top: 3rem; }
+    .blog h2 { font-size: 1.1rem; letter-spacing: 0.04em; text-transform: uppercase; color: #333; margin-bottom: 1rem; border-bottom: 2px solid #ccc; padding-bottom: 4px; }
+    .blog-post { margin-bottom: 2rem; }
+    .blog-post h3 { font-size: 1rem; margin: 0 0 0.3rem; font-weight: 600; }
+    .blog-post p { font-size: 0.95rem; color: #444; margin: 0.2rem 0 0; }
+    .blog-post time { display: block; font-size: 0.75rem; color: #777; margin-bottom: 0.2rem; }
+
+    /* FOOTER BAND */
+    .footer-band {
+      background: var(--hero-bg);
+      color: var(--hero-text);
+      padding: 40px 20px;
+      text-align: center;
+      margin-top: 5rem;
+      font-size: 0.85rem;
+    }
+  /* HOME BUTTON (top-left) */
+    .home-button {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 1000;
+      background: var(--btn-bg);
+      color: var(--btn-text);
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-weight: 600;
+      line-height: 1;
+      border: 1px solid rgba(255,255,255,0.15);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      text-decoration: none;
+      transition: background 0.25s ease;
+    }
+    .home-button:hover { background: var(--btn-hover); }
+  </style>
+</head>
+<body>
+
+  <a class="home-button" href="index.html" title="Go to homepage">← Home</a>
+
+  <!-- HERO BAND -->
+  <header class="hero-band">
+    <h1>Hi, I’m Fisher.</h1>
+    <p>This is everything I’m working on right now - projects, research threads, half-built systems, and ideas in motion. Personal notes and writing live here too.</p>
+    <div class="hero-buttons">
+      <a href="mailto:VincentFisherArmstrong@Gmail.com">Email Me</a>
+      <a href="https://github.com/Silly-Goose-Inc" target="_blank">GitHub</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- LEFT: Projects -->
+    <section>
+      <ul>
+        <li class="ahs">
+          <a class="project" href="https://example.com/appalachian-hillclimb">Appalachian Hillclimb Series</a>
+          <a class="email-link" href="mailto:activismmotorsports@gmail.com">✉</a>
+          <div class="desc">Regional hillclimb championship focused on safety, accessibility, and building community. Courses explored as systems rather than events.</div>
+        </li>
+
+        <li class="motor">
+          <a class="project" href="https://example.com/activism-motorsports">Activism Motorsports</a>
+          <a class="email-link" href="mailto:activismmotorsports@gmail.com">✉</a>
+          <div class="desc">Grassroots racing program doubling as a lab for engineering, analytics, and driving craft.</div>
+          <ul class="subset">
+            <li>
+              <a href="https://example.com/dpac">DPAC</a>
+              <div class="desc">Framework for comparing performance across cars and conditions.</div>
+            </li>
+            <li>
+              <a href="https://example.com/project-nova">Project N.O.V.A.</a>
+              <div class="desc">Front-wheel-drive research build. More questions than answers.</div>
+            </li>
+          </ul>
+        </li>
+
+        <li class="photo">
+          <a class="project" href="https://example.com/activism-photography">Activism Photography</a>
+          <a class="email-link" href="mailto:activismphotos@gmail.com">✉</a>
+          <div class="desc">Documentary photography exploring people, movements, and motorsports culture.</div>
+        </li>
+
+        <li class="tech">
+          <a class="project" href="https://example.com/fishtanktech">FishTankTech</a>
+          <a class="email-link" href="mailto:fishtanktech@gmail.com">✉</a>
+          <div class="desc">Systems, software, and tooling that quietly powers projects behind the scenes.</div>
+        </li>
+
+        <li class="bob">
+          <a class="project" href="https://example.com/bob-and-robert">Bob &amp; Robert</a>
+          <div class="desc">Writing, archives, and experimental publishing exploring ideas beyond categorization.</div>
+          <div class="email-link"><em>Email not defined</em></div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- RIGHT: Notes + Blog -->
+    <aside>
+      <h2>Notes</h2>
+      <div class="note">
+        <time>Jan 2026</time>
+        Thinking about hill classification as a spectrum instead of discrete types.
+      </div>
+      <div class="note">
+        <time>Dec 2025</time>
+        Early thoughts on DPAC breaking when tire choice dominates power-to-weight.
+      </div>
+      <div class="note">
+        <time>Nov 2025</time>
+        Why I keep building tools instead of dashboards.
+      </div>
+
+      <div class="blog">
+        <h2>Blog</h2>
+        <article class="blog-post">
+          <time>Jan 2026</time>
+          <h3><a href="https://example.com/blog/hillclimb-as-a-system">Hillclimb as a System, Not a Sport</a></h3>
+          <p>An argument for treating hillclimbs as interacting variables—terrain, weather, drivers, and machines—rather than isolated events.</p>
+        </article>
+        <article class="blog-post">
+          <time>Dec 2025</time>
+          <h3><a href="https://example.com/blog/why-dpac-is-fragile">Why DPAC Is Fragile (and That’s OK)</a></h3>
+          <p>A working theory on why performance indices fail at the edges—and how to design for that failure instead of hiding it.</p>
+        </article>
+      </div>
+    </aside>
+  </main>
+
+  <!-- FOOTER BAND -->
+  <footer class="footer-band">
+    © 2026 Activism Photography · Activism Motorsports · FishTankTech<br>
+    Designed and maintained by FishTankTech
+  </footer>
+
+</body>
+</html>
