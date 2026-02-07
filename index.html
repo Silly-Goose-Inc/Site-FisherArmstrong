@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Fisher Armstrong</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Personal hub for Fisher Armstrong—projects, notes, and things in progress.">
+  <meta name="description" content="A living index of Fisher Armstrong’s work, ideas, and experiments in motion.">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,11 +16,11 @@
       --ink: #111;
       --muted: #555;
 
-      --ahs: #d9642f;       /* darker orange */
-      --motor: #c9a800;     /* darker yellow */
-      --photo: #f49c9c;     /* lighter red */
+      --ahs: #d9642f;
+      --motor: #c9a800;
+      --photo: #f49c9c;
       --tech: #2f6fb2;
-      --bob: #6b5b95;       /* purpleish for Bob & Robert */
+      --bob: #6b5b95;
 
       --hero-bg: #2e2a36;
       --hero-text: #f5f3ef;
@@ -68,7 +68,6 @@
       font-size: 1.05rem;
       max-width: 640px;
       margin: 0 auto 1.5rem;
-      color: var(--hero-text);
     }
     .hero-buttons {
       margin-top: 1.5rem;
@@ -98,84 +97,112 @@
       display: grid;
       grid-template-columns: 1fr 320px;
       gap: 64px;
-      align-items: start;
     }
     @media (max-width: 900px) {
-      main {
-        grid-template-columns: 1fr;
-      }
+      main { grid-template-columns: 1fr; }
     }
 
-        /* Apply to all links */
-        a {
-        color: inherit;            /* use the color of the parent element */
-        text-decoration: none;     /* optional if you want no underline */
-        border-bottom: 2px solid currentColor; /* keeps subtle underline style */
-        }
-
-        a:visited, a:hover, a:active {
-        color: inherit;            /* ensures visited/hover links don't turn blue/purple */
-        text-decoration: none;     /* maintains your hover style */
-        }
-
-
-    /* PROJECTS LEFT */
-    ul { list-style: none; padding: 0; margin: 0; }
-    li { margin-bottom: 2.6rem; position: relative; }
-    a.project { font-weight: 600; font-size: 1.1rem; text-decoration: none; border-bottom: 2px solid currentColor; }
-    a.project:hover { opacity: 0.85; }
-    .desc { margin-top: 0.45rem; font-size: 0.95rem; color: var(--muted); max-width: 640px; }
-    .subset { margin-top: 1rem; padding-left: 1.2rem; border-left: 3px solid rgba(0,0,0,0.15); }
-    .subset li { margin-bottom: 0.9rem; }
-    .email-link {
-      position: absolute;
-      right: 0;
-      top: 0;
-      display: none !important;
-      align-items: center;
-      justify-content: center;
-      height: 32px;              /* uniform height */
-      min-width: 40px;           /* uniform min width */
-      padding: 0 10px;           /* consistent horizontal padding */
-      font-size: 0.95rem;        /* slightly larger text */
-      font-weight: 600;          /* stronger weight for uniform look */
+    a {
+      color: inherit;
       text-decoration: none;
+      border-bottom: 2px solid currentColor;
+    }
+    a:hover { opacity: 0.85; }
+
+    ul { list-style: none; padding: 0; margin: 0; }
+    li { margin-bottom: 2.6rem; }
+
+
+    /* ----- SECONDARY BUTTON ROW ----- */
+.hero-secondary {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* softer, pill-like buttons — different vibe */
+.pill {
+  padding: 0.55rem 1.05rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.35);
+  background: rgba(255,255,255,0.06);
+  color: var(--hero-text);
+  transition: transform 0.1s ease, background 0.2s ease;
+}
+
+.pill:hover {
+  background: rgba(255,255,255,0.12);
+  transform: translateY(-1px);
+}
+
+/* very subtle differentiation */
+.linkedin { border-color: rgba(255,255,255,0.45); }
+.ko-fi    { border-color: rgba(255,255,255,0.35); }
+.paypal   { border-color: rgba(255,255,255,0.30); }
+
+    a.project {
+  font-weight: 600;
+  font-size: 1.1rem;
+  border-bottom: none; /* keep it cleaner */
+      }
+
+      /* Color the business names only */
+      .ahs   a.project { color: var(--ahs); }
+      .motor a.project { color: var(--motor); }
+      .photo a.project { color: var(--photo); }
+      .tech  a.project { color: var(--tech); }
+      .bob   a.project { color: var(--bob); }
+
+      li {
+  margin-bottom: 2.6rem;
+  padding-left: 12px;
+  border-left: 3px solid transparent;
+}
+
+.ahs   { border-left-color: var(--ahs); }
+.motor { border-left-color: var(--motor); }
+.photo { border-left-color: var(--photo); }
+.tech  { border-left-color: var(--tech); }
+.bob   { border-left-color: var(--bob); }
+
+
+    .desc {
+      margin-top: 0.45rem;
+      font-size: 0.95rem;
       color: var(--muted);
-      border: 1.5px solid var(--muted);
-      border-radius: 6px;        /* slightly larger radius */
-      transition: background 0.3s, color 0.3s, border-color 0.3s;
-      line-height: 1;            /* avoid vertical overflow */
-      box-sizing: border-box;    /* include border in set height */
-      background: transparent;
-    }
-    .email-link:hover {
-      background: var(--muted);
-      color: #fff;
-      border-color: var(--muted);
+      max-width: 640px;
     }
 
-    /* Color coding */
-    .ahs { color: var(--ahs); }
-    .motor { color: var(--motor); }
-    .photo { color: var(--photo); }
-    .tech { color: var(--tech); }
-    .bob { color: var(--bob); }
+    aside {
+      padding-left: 24px;
+      border-left: 1px solid rgba(0,0,0,0.15);
+    }
 
-    /* RIGHT COLUMN */
-    aside { position: relative; padding-left: 24px; border-left: 1px solid rgba(0,0,0,0.15); }
-    aside h2 { font-size: 1.1rem; letter-spacing: 0.04em; text-transform: uppercase; color: #333; margin-bottom: 1.5rem; border-bottom: 2px solid #ccc; padding-bottom: 4px; }
-    .note { margin-bottom: 1.5rem; font-size: 0.95rem; color: #333; }
-    .note time { display: block; font-size: 0.75rem; color: #777; margin-bottom: 0.2rem; }
+    aside h2 {
+      font-size: 1.1rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 4px;
+    }
 
-    /* Blog section */
-    .blog { margin-top: 3rem; }
-    .blog h2 { font-size: 1.1rem; letter-spacing: 0.04em; text-transform: uppercase; color: #333; margin-bottom: 1rem; border-bottom: 2px solid #ccc; padding-bottom: 4px; }
-    .blog-post { margin-bottom: 2rem; }
-    .blog-post h3 { font-size: 1rem; margin: 0 0 0.3rem; font-weight: 600; }
-    .blog-post p { font-size: 0.95rem; color: #444; margin: 0.2rem 0 0; }
-    .blog-post time { display: block; font-size: 0.75rem; color: #777; margin-bottom: 0.2rem; }
+    .note {
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+    .note time {
+      display: block;
+      font-size: 0.75rem;
+      color: #777;
+      margin-bottom: 0.2rem;
+    }
 
-    /* FOOTER BAND */
     .footer-band {
       background: var(--hero-bg);
       color: var(--hero-text);
@@ -184,7 +211,7 @@
       margin-top: 5rem;
       font-size: 0.85rem;
     }
-  /* HOME BUTTON (top-left) */
+
     .home-button {
       position: fixed;
       top: 12px;
@@ -195,112 +222,194 @@
       padding: 6px 10px;
       border-radius: 6px;
       font-weight: 600;
-      line-height: 1;
-      border: 1px solid rgba(255,255,255,0.15);
-      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
       text-decoration: none;
-      transition: background 0.25s ease;
     }
-    .home-button:hover { background: var(--btn-hover); }
+
+.hero-divider {
+  margin: 1rem auto 0.5rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  opacity: 0.7;
+}
+
+/* Divider between Notes and Blog */
+.aside-divider {
+  height: 1px;
+  background: rgba(0,0,0,0.15);
+  margin: 1.8rem 0;
+}
+
+/* Blog list styling */
+.post {
+  margin-bottom: 1.2rem;
+  font-size: 0.95rem;
+}
+
+.post time {
+  display: block;
+  font-size: 0.75rem;
+  color: #777;
+  margin-bottom: 0.15rem;
+}
+/* Divider (already suggested earlier) */
+.aside-divider {
+  height: 1px;
+  background: rgba(0,0,0,0.15);
+  margin: 1.8rem 0;
+}
+
+/* Blog section layout */
+.post {
+  margin-bottom: 1.4rem;
+  font-size: 0.95rem;
+}
+
+/* Make the newest/featured post feel larger */
+.post.featured {
+  padding: 8px 0;
+}
+
+.post-title {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+  border-bottom: none; /* cleaner look in sidebar */
+}
+
+.post-excerpt {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+/* Archive link at bottom */
+.blog-archive {
+  margin-top: 0.8rem;
+  font-size: 0.9rem;
+}
+
+.blog-archive a {
+  border-bottom: 1px solid currentColor;
+}
+
+
   </style>
 </head>
+
 <body>
 
-  <a class="home-button" href="index.html" title="Go to homepage">← Home</a>
+<a class="home-button" href="index.html">← Home</a>
 
-  <!-- HERO BAND -->
-  <header class="hero-band">
-    <h1>Hi, I’m Fisher.</h1>
-    <p>This is everything I’m working on right now - projects, research threads, half-built systems, and ideas in motion. Personal notes and writing live here too.</p>
-    <div class="hero-buttons">
-      <a href="mailto:VincentFisherArmstrong@Gmail.com">Email Me</a>
-      <a href="https://github.com/Silly-Goose-Inc" target="_blank">GitHub</a>
+<header class="hero-band">
+  <h1>Hi, I’m Fisher.</h1>
+  <p> This is a snapshot of what I’m working on right now — some of it’s finished, some of it’s messy, and most of it’s still in progress. If you’re curious, you’re in the right place. </p>
+
+<div class="hero-buttons">
+  <a href="mailto:VincentFisherArmstrong@gmail.com">Email</a>
+  <a href="https://github.com/Silly-Goose-Inc" target="_blank">GitHub</a>
+</div>
+
+<div class="hero-divider">— connect —</div>
+
+
+<div class="hero-secondary">
+  <a class="pill linkedin" href="https://www.linkedin.com/in/fisher-armstrong-b8a26a318/" target="_blank">LinkedIn</a>
+  <a class="pill ko-fi" href="https://ko-fi.com/fisherarmstrong" target="_blank">Ko-fi</a>
+  <a class="pill paypal" href="https://paypal.me/ActivismPhotography" target="_blank">PayPal</a>
+</div>
+
+</header>
+
+<main>
+  <section>
+    <ul>
+      <li class="ahs">
+        <a class="project" href="https://www.appalachianhillclimb.com">
+          Appalachian Hillclimb Series
+        </a>
+        <div class="desc">
+          A regional hillclimb championship built around safety, accessibility, 
+          and the strange joy of driving up mountains really fast — together.
+        </div>
+      </li>
+
+      <li class="motor">
+        <a class="project" href="https://activismmotorsprts.netlify.app">
+          Activism Motorsports
+        </a>
+        <div class="desc">
+          Grassroots racing treated like a rolling laboratory — part competition, 
+          part engineering experiment, all curiosity.
+        </div>
+      </li>
+
+      <li class="photo">
+        <a class="project" href="https://activism-photography.netlify.app">
+          Activism Photography
+        </a>
+        <div class="desc">
+          Documentary work about people, movements, and motorsports culture — 
+          where the camera is as much a notebook as it is a tool.
+        </div>
+      </li>
+
+      <li class="tech">
+        <a class="project" href="https://fishtanktech.netlify.app">
+          FishTankTech
+        </a>
+        <div class="desc">
+          The quiet machinery behind the scenes: software, systems, and tools 
+          that make everything else possible.
+        </div>
+      </li>
+
+      <li class="bob">
+        <a class="project" href="https://bobandrobert.netlify.app">
+          Bob &amp; Robert
+        </a>
+        <div class="desc">
+          An experimental archive and publishing project — part artwork, part 
+          history, part ongoing conversation.
+        </div>
+      </li>
+    </ul>
+  </section>
+
+<aside>
+  <h2>Notes</h2>
+  <div class="note">
+    <time>Jan 2026</time>
+    Thinking about hills not as categories, but as a continuous spectrum.
+  </div>
+  <div class="note">
+    <time>Dec 2025</time>
+    Trying to understand why I’d rather build tools than dashboards.
+  </div>
+
+  <h2>Blog</h2>
+
+  <div class="post featured">
+    <time>Feb 2026</time>
+    <a href="/blog/blog.html/" class="post-title">
+      Why I Build Tools Instead of Dashboards
+    </a>
+    <div class="post-excerpt">
+      On craft, friction, and why messy instruments often teach more than polished interfaces.
     </div>
-  </header>
+  </div>
 
-  <main>
-    <!-- LEFT: Projects -->
-    <section>
-      <ul>
-        <li class="ahs">
-          <a class="project" href="www.AppalachianHillClimb.Com">Appalachian Hillclimb Series</a>
-          <a class="email-link" href="mailto:AppalachianHillclimb@gmail.com">✉</a>
-          <div class="desc">Regional hillclimb championship focused on safety, accessibility, and building community. Courses explored as systems rather than events.</div>
-        </li>
+  <div class="blog-archive">
+    <a href="/blog/blog.html">View all posts →</a>
+  </div>
+</aside>
 
-        <li class="motor">
-          <a class="project" href="https://example.com/activism-motorsports">Activism Motorsports</a>
-          <a class="email-link" href="mailto:activismmotorsports@gmail.com">✉</a>
-          <div class="desc">Grassroots racing program doubling as a lab for engineering, analytics, and driving craft.</div>
-          <ul class="subset">
-            <li>
-              <a href="https://example.com/dpac">DPAC</a>
-              <div class="desc">Framework for comparing performance across cars and conditions.</div>
-            </li>
-            <li>
-              <a href="https://example.com/project-nova">Project N.O.V.A.</a>
-              <div class="desc">Front-wheel-drive research build. More questions than answers.</div>
-            </li>
-          </ul>
-        </li>
 
-        <li class="photo">
-          <a class="project" href="https://example.com/activism-photography">Activism Photography</a>
-          <a class="email-link" href="mailto:activismphotos@gmail.com">✉</a>
-          <div class="desc">Documentary photography exploring people, movements, and motorsports culture.</div>
-        </li>
+</main>
 
-        <li class="tech">
-          <a class="project" href="https://example.com/fishtanktech">FishTankTech</a>
-          <a class="email-link" href="mailto:fishtanktech@gmail.com">✉</a>
-          <div class="desc">Systems, software, and tooling that quietly powers projects behind the scenes.</div>
-        </li>
-
-        <li class="bob">
-          <a class="project" href="https://example.com/bob-and-robert">Bob &amp; Robert</a>
-          <div class="desc">Writing, archives, and experimental publishing exploring ideas beyond categorization.</div>
-          <div class="email-link"><em>Email not defined</em></div>
-        </li>
-      </ul>
-    </section>
-
-    <!-- RIGHT: Notes + Blog -->
-    <aside>
-      <h2>Notes</h2>
-      <div class="note">
-        <time>Jan 2026</time>
-        Thinking about hill classification as a spectrum instead of discrete types.
-      </div>
-      <div class="note">
-        <time>Dec 2025</time>
-        Early thoughts on DPAC breaking when tire choice dominates power-to-weight.
-      </div>
-      <div class="note">
-        <time>Nov 2025</time>
-        Why I keep building tools instead of dashboards.
-      </div>
-
-      <div class="blog">
-        <h2>Blog</h2>
-        <article class="blog-post">
-          <time>Jan 2026</time>
-          <h3><a href="https://example.com/blog/hillclimb-as-a-system">Hillclimb as a System, Not a Sport</a></h3>
-          <p>An argument for treating hillclimbs as interacting variables—terrain, weather, drivers, and machines—rather than isolated events.</p>
-        </article>
-        <article class="blog-post">
-          <time>Dec 2025</time>
-          <h3><a href="https://example.com/blog/why-dpac-is-fragile">Why DPAC Is Fragile (and That’s OK)</a></h3>
-          <p>A working theory on why performance indices fail at the edges—and how to design for that failure instead of hiding it.</p>
-        </article>
-      </div>
-    </aside>
-  </main>
-
-  <!-- FOOTER BAND -->
-  <footer class="footer-band">
-    © 2026 Activism Photography · Activism Motorsports · FishTankTech<br>
-    Designed and maintained by FishTankTech
-  </footer>
+<footer class="footer-band">
+  © 2026 Fisher Armstrong<br>
+  Designed and maintained by FishTankTech
+</footer>
 
 </body>
 </html>
