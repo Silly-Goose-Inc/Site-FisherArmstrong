@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Fuck Your Brand's Logo — Fisher Armstrong</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="On CGMs, EDC knives, wallets, and the difference between wearing a brand and choosing one.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --ink:    #161616;
+  --paper:  #f4f1ea;
+  --muted:  #5c5c5c;
+  --muted-2:#8a8a8a;
+  --rule:   rgba(0,0,0,0.1);
+  --tech:   #2f6fb2;
+  --motor:  #c9a800;
+  --warn:   #b85c1a;
+  --dark:   #1c1c22;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, sans-serif;
+  background:
+    linear-gradient(rgba(0,0,0,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.02) 1px, transparent 1px),
+    var(--paper);
+  background-size: 32px 32px;
+  color: var(--ink);
+  line-height: 1.7;
+}
+
+a { text-decoration: none; color: inherit; }
+h1, h2, h3 { margin: 0; }
+p { margin: 0; }
+
+.version {
+  position: fixed;
+  top: 14px; right: 14px;
+  background: var(--dark);
+  color: #fff;
+  padding: 6px 12px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.75rem;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+  z-index: 100;
+}
+
+.post-header {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 60px 28px 0;
+}
+
+.breadcrumb {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.75rem;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+  margin-bottom: 2rem;
+}
+
+.breadcrumb span { margin: 0 6px; opacity: 0.4; }
+
+.post-eyebrow {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--warn);
+  margin-bottom: 1rem;
+}
+
+.post-header h1 {
+  font-size: 2.1rem;
+  font-weight: 600;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+  max-width: 580px;
+}
+
+.post-meta {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.68rem;
+  color: var(--muted-2);
+  letter-spacing: 0.05em;
+  margin-bottom: 2.5rem;
+}
+
+.post-meta-dot {
+  width: 3px; height: 3px;
+  border-radius: 50%;
+  background: var(--muted-2);
+}
+
+.post-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.tag {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.62rem;
+  padding: 3px 9px;
+  border-radius: 4px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: rgba(0,0,0,0.06);
+  color: var(--muted);
+}
+
+.header-rule {
+  border: none;
+  border-top: 1px solid var(--rule);
+  margin: 0;
+}
+
+.post-body {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 48px 28px 100px;
+}
+
+.post-body p {
+  font-size: 1rem;
+  line-height: 1.78;
+  margin-bottom: 1.4rem;
+}
+
+.post-body h2 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 2.8rem 0 0.9rem;
+}
+
+.post-body h3 {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin: 2rem 0 0.7rem;
+}
+
+.callout {
+  border-left: 3px solid;
+  padding: 14px 18px;
+  margin: 1.8rem 0;
+  border-radius: 0 6px 6px 0;
+}
+
+.callout p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.callout.info  { border-color: var(--tech); background: rgba(47,111,178,0.07); }
+.callout.note  { border-color: var(--motor); background: rgba(201,168,0,0.07); }
+.callout.warn  { border-color: var(--warn); background: rgba(184,92,26,0.07); }
+
+.callout-label {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 6px;
+}
+
+footer {
+  background: var(--dark);
+  color: rgba(255,255,255,0.5);
+  text-align: center;
+  padding: 40px 20px;
+  font-size: 0.82rem;
+  font-family: "IBM Plex Mono", monospace;
+}
+</style>
+</head>
+
+<body>
+
+<div class="version">2026 - Jul 8</div>
+
+<div class="post-header">
+
+  <p class="breadcrumb">
+    <a href="../index.html">fisherarmstrong</a>
+    <span>/</span>
+    <a href="blog.html">blog</a>
+    <span>/</span>
+    fuck-your-brands-logo
+  </p>
+
+  <p class="post-eyebrow">Field Notes</p>
+
+  <h1>In the Kindest Way Possible — Fuck Your Brand's Logo (:</h1>
+
+  <div class="post-meta">
+    <span>Jul 8, 2026</span>
+    <span class="post-meta-dot"></span>
+    <span>Fisher Armstrong</span>
+    <span class="post-meta-dot"></span>
+    <span>~6 min read</span>
+  </div>
+
+  <div class="post-tags">
+    <span class="tag">T1D Life</span>
+    <span class="tag">EDC</span>
+    <span class="tag">Branding</span>
+    <span class="tag">Milwaukee</span>
+    <span class="tag">Rant</span>
+  </div>
+
+</div>
+
+<hr class="header-rule" style="max-width:680px;margin:0 auto;">
+
+<div class="post-body">
+
+  <p>
+    I don't claim to have many records. But this one, I think T1Ds have a pretty solid claim to: most consistent visible logo wearer. For all intents and purposes, I've got at least one, likely two, logos on my body at all times.
+  </p>
+
+  <p>
+    CGMs and closed-loop pumps are genuinely important, vital tech for the modern T1D community. Doesn't stop it from being frustrating to be a walking billboard. The Dexcom logo on top of my Dexcom is always visible — especially in summer, no shirt or short sleeves, it's <em>there</em>. Same with the logos on my pump and its case. None of this is inherently negative. I support these companies. It's still frustrating to be biologically forced into wearing someone else's brand.
+  </p>
+
+  <h2>The Habit</h2>
+
+  <p>
+    So I've got a habit. Almost everything I carry day to day has its logos removed, covered, or swapped for something I'm actually okay displaying.
+  </p>
+
+  <p>
+    This isn't me saying I never want logos showing. Anyone who knows me knows I'm a huge sticker guy. Anything I genuinely support gets displayed — my choice. My water bottles and mugs are sticker bombs, basically every inch covered. The difference, and it's an important one: I get to choose what gets displayed.
+  </p>
+
+  <div class="callout note">
+    <div class="callout-label">The Rule</div>
+    <p>
+      Not anti-brand. Anti-being-drafted. If I put it there, it's mine. If it showed up on the packaging, it's negotiable.
+    </p>
+  </div>
+
+  <h2>The Wallet</h2>
+
+  <p>
+    Take my wallet. I carry one every day, like every other "adult" member of society is apparently required to. When I bought this thing, it had what I'd call an aggressive logo slapped on the flat side — massive cross, big text, "Swiss Gear." So I wrapped it in carbon vinyl and covered the rest in my own stickers. Made my own logo, basically. Then I put black lettering on the black vinyl, so in low light — or if you're not looking for it — you can't read it. If I want to show you, I can. It's just not shouting at you by default.
+  </p>
+
+  <h2>The Knife</h2>
+
+  <p>
+    Which brings me to the instigating incident. I recently replaced my EDC pocket knife.
+  </p>
+
+  <p>
+    The old one was reliable, useful — but missing something important. Carrying a prybar, there's basically no way to deal with a screw. You'd think the prybar could double as a flathead. The angle says no. Every time.
+  </p>
+
+  <p>
+    Yes. I bought a new Milwaukee Fastback. Quick-release blade, quick-deploy multi-position bit holder on the back. Already saved the day once or twice, and I've had it 48 hours.
+  </p>
+
+  <p>
+    My favorite thing about it isn't even the functionality — it's that it's bright Milwaukee red. I am <em>notorious</em> for setting something down in grass while working and never seeing it again. Massive upgrade from my old black knife. I can actually find this one.
+  </p>
+
+  <div class="callout warn">
+    <div class="callout-label">Current Project</div>
+    <p>
+      There's a very bright, very distinct white Milwaukee logo on the side. Great knife — don't like your logo. Matching a paint color to cover it, keeping it red. If that doesn't work, we're probably going safety orange.
+    </p>
+  </div>
+
+  <h2>The Point</h2>
+
+  <p>
+    In short: this isn't me saying every brand is terrible and we should abolish branding. It's me saying we shouldn't, as a society, force people — whether through medical necessity or everyday product defaults — to carry your logo without their permission. That's a compromise made on their behalf. They should get a say.
+  </p>
+
+  <p>
+    Thus: fuck your brand's logo.
+  </p>
+
+</div>
+
+<footer>
+  © 2026 Fisher Armstrong <br>
+  Built & Maintained by @FishTankTech
+</footer>
+
+</body>
+</html>
