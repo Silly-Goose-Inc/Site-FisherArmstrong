@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The Suspicion of Boring Solutions — Fisher Armstrong</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="On notebooks, spreadsheets, Verbatim, and the difference between solving a problem and purchasing a more interesting version of it.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --ink:    #161616;
+  --paper:  #f4f1ea;
+  --muted:  #5c5c5c;
+  --muted-2:#8a8a8a;
+  --rule:   rgba(0,0,0,0.1);
+  --tech:   #2f6fb2;
+  --motor:  #c9a800;
+  --warn:   #b85c1a;
+  --dark:   #1c1c22;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, sans-serif;
+  background:
+    linear-gradient(rgba(0,0,0,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.02) 1px, transparent 1px),
+    var(--paper);
+  background-size: 32px 32px;
+  color: var(--ink);
+  line-height: 1.7;
+}
+
+a { text-decoration: none; color: inherit; }
+h1, h2, h3 { margin: 0; }
+p { margin: 0; }
+
+.version {
+  position: fixed;
+  top: 14px; right: 14px;
+  background: var(--dark);
+  color: #fff;
+  padding: 6px 12px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.75rem;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+  z-index: 100;
+}
+
+.post-header {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 60px 28px 0;
+}
+
+.breadcrumb {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.75rem;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+  margin-bottom: 2rem;
+}
+
+.breadcrumb span { margin: 0 6px; opacity: 0.4; }
+
+.post-eyebrow {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--motor);
+  margin-bottom: 1rem;
+}
+
+.post-header h1 {
+  font-size: 2.1rem;
+  font-weight: 600;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+  max-width: 580px;
+}
+
+.post-meta {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.68rem;
+  color: var(--muted-2);
+  letter-spacing: 0.05em;
+  margin-bottom: 2.5rem;
+}
+
+.post-meta-dot {
+  width: 3px; height: 3px;
+  border-radius: 50%;
+  background: var(--muted-2);
+}
+
+.post-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.tag {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.62rem;
+  padding: 3px 9px;
+  border-radius: 4px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: rgba(0,0,0,0.06);
+  color: var(--muted);
+}
+
+.header-rule {
+  border: none;
+  border-top: 1px solid var(--rule);
+  margin: 0;
+}
+
+.post-body {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 48px 28px 100px;
+}
+
+.post-body p {
+  font-size: 1rem;
+  line-height: 1.78;
+  margin-bottom: 1.4rem;
+}
+
+.post-body h2 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 2.8rem 0 0.9rem;
+}
+
+.post-body h3 {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin: 2rem 0 0.7rem;
+}
+
+.callout {
+  border-left: 3px solid;
+  padding: 14px 18px;
+  margin: 1.8rem 0;
+  border-radius: 0 6px 6px 0;
+}
+
+.callout p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.callout.info  { border-color: var(--tech); background: rgba(47,111,178,0.07); }
+.callout.note  { border-color: var(--motor); background: rgba(201,168,0,0.07); }
+.callout.warn  { border-color: var(--warn); background: rgba(184,92,26,0.07); }
+
+.callout-label {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 6px;
+}
+
+footer {
+  background: var(--dark);
+  color: rgba(255,255,255,0.5);
+  text-align: center;
+  padding: 40px 20px;
+  font-size: 0.82rem;
+  font-family: "IBM Plex Mono", monospace;
+}
+</style>
+</head>
+
+<body>
+
+<div class="version">2026 - Jul 8</div>
+
+<div class="post-header">
+
+  <p class="breadcrumb">
+    <a href="../index.html">fisherarmstrong</a>
+    <span>/</span>
+    <a href="blog.html">blog</a>
+    <span>/</span>
+    suspicion-of-boring-solutions
+  </p>
+
+  <p class="post-eyebrow">Field Notes</p>
+
+  <h1>The Suspicion of Boring Solutions</h1>
+
+  <div class="post-meta">
+    <span>Jul 5, 2026</span>
+    <span class="post-meta-dot"></span>
+    <span>Fisher Armstrong</span>
+    <span class="post-meta-dot"></span>
+    <span>~9 min read</span>
+  </div>
+
+  <div class="post-tags">
+    <span class="tag">Essay</span>
+    <span class="tag">Life Thoughts</span>
+    <span class="tag">Maintenance</span>
+  </div>
+
+</div>
+
+<hr class="header-rule" style="max-width:680px;margin:0 auto;">
+
+<div class="post-body">
+
+  <p>
+    I think the internet has made us weirdly suspicious of boring solutions.
+  </p>
+
+  <p>
+    I think we are still pretty cool with "old solutions" (mostly). Just not "boring" ones.
+   I.e. (A notebook. A spreadsheet. A torque wrench. Ethernet.)
+  </p>
+
+  <p>
+    None of these things make particularly good YouTube videos, which may be an inharent problem: Nobody is building an entire online brand around the revolutionary concept of writing things down in a small paper book and then continuing to write things down in that same small paper book until the problem eventually goes away. - In this day-and-age there really are no Reddit wars over external hard drives. Nobody is filming (or trying) cinematic B-roll of a click-style torque wrench. No startup founder, or kickstarter campaign has announced that they have finally disrupted the market through the concept of plugging in an ethernet cable.
+  </p>
+
+  <p>
+    Meanwhile - there are entire industries dedicated to replacing all of these things with something newer, smarter, prettier, more connected, and usually subscription-based.
+  </p>
+
+  <p>
+    (I have been told the main flaw with a spiral-bound notebook was that it refused to charge $11.99 per month.)
+  </p>
+
+  <h2>The Spreadsheet Problem</h2>
+
+  <p>
+    There is a joke that every "sufficient" organization tool <em>eventually</em> recreates Excel (badly), and every year I become more convinced that this is less of a joke and more of an observed law of nature ("Fisher's Law Of Data"???).
+  </p>
+
+  <p>
+    Every damn year, People spend millions of dollars building project management platforms, inventory systems, telemetry dashboards, AI knowledge bases, workflow automation suites, and data ecosystems that eventually make consumers arrive at the startling conclusion that maybe information could be represented as rows and columns.
+  </p>
+
+  <p>
+    Which (to be crystal clear) is a *spreadsheet*.
+  </p>
+
+  <p>
+    Sometimes it has dark mode. Sometimes it has rounded corners. Sometimes it has AI features. Sometimes it has a pricing structure that requires speaking to a sales representative and scheduling a discovery call (Fuck you @SECU).
+  </p>
+
+  <p>
+    But, it's a spreadsheet nonetheless.
+  </p>
+
+  <p>
+    And the irritating thing is that (often, not always) the spreadsheet actually was the correct answer all along.
+  </p>
+
+  <p>
+    And, it's not because spreadsheets are exciting; (hint) they aren't. They are many things, but exciting is not one of them. They're legible, though. You can see the numbers. You can see the assumptions. If something looks wrong, you can usually trace the problem back to where it started. If somebody hands you a spreadsheet they built three years ago, there is a reasonable chance that you'll (at the very least) understand what they were trying to accomplish.
+  </p>
+
+  <p>
+    Now - try doing that with modern enterprise software.
+  </p>
+
+  <div class="callout note">
+    <div class="callout-label">Observation</div>
+    <p>
+      Especially enterprise software that was acquired by another company that was later acquired by a holding company whose primary business is to acquire software and try to increase the ROI on the devolopment costs.
+    </p>
+  </div>
+
+  <h2>The Verbatim Lesson</h2>
+
+  <p>
+    Lately, i have been reminded that I learned some version of this lesson in debate.
+  </p>
+
+  <p>
+    For people lucky enough to have avoided high school policy debate - evidence management used to be a fairly chaotic combination of Word documents, folder trees, USB drives, and file naming conventions that ranged from "organized" to "this should probably qualify as evidence in a criminal investigation." (VFA --> CLH)
+  </p>
+
+  <p>
+    Then came Verbatim.
+  </p>
+
+  <p>
+    And Verbatim was supposed to fix all of it.
+  </p>
+
+  <p>
+    Integrated evidence management. Automatic citations; Cleaner speech documents. Better and easier prep sharing. "Professional-looking files". "Overall Less friction."
+  </p>
+
+  <p>
+    And to be fair to it (and Aaron Hardy), it absolutly did all of those things.
+  </p>
+
+  <p>
+    Our files looked incredible. Everything looked cleaner, more modern, and more serious. When someone had walked past our computers during a tournament and glanced at our prep, (I like to think that) they thought, "these people absolutely know what they're doing."
+  </p>
+
+  <p>
+    But - I was definitively debating worse.
+  </p>
+
+  <p>
+    Not catastrophically worse. Not "Begin researching trade schools during lunch" worse. Just worse in ways that were difficult to measure and even harder to explain - But I got this far (So i will try).
+  </p>
+
+  <p>
+    I was spending more time managing systems and less time understanding arguments - When i read a K file, most of my energy was making sure that i could send to speechdocs in the fastest way; BUT I DIDN'T KNOW WHAT TO SEND. In the 2 years I used VRBTM, I spent more time organizing evidence and less time reading evidence.
+  </p>
+
+  <p>
+    Which turns out to be an important distinction.
+  </p>
+
+  <div class="callout warn">
+    <div class="callout-label">The Trap</div>
+    <p>
+      If i can offer any advice, it is to remember that: There is an entire category of technology whose primary purpose is making you feel like the sort of person who definitely has their life together. But very rarely, does that software actually get said person's life "together".
+    </p>
+  </div>
+
+  <h2>The Maintenance Trap</h2>
+
+  <p>
+    Photography has this problem Big-Time.
+  </p>
+
+  <p>
+    It is unbelievably easy to convince yourself (Often through outide influence) that your issue is a camera problem when it is actually a lighting problem, or a composition problem, or a patience problem. Motorsport people do exactly the same thing with suspension parts and horsepower. Developers do it with frameworks. Homelab people do it with hardware. Linux users do it with infrastructure.
+  </p>
+
+  <p>
+    Actually, Linux users might be the worst offenders here.
+  </p>
+
+  <p>
+    There are people running enough redundant services to maintain regional air traffic control operations whose primary daily computing tasks consist of opening Firefox and checking email.
+  </p>
+
+  <p>
+    Essentially, (Back on topic) Every hobby eventually develops its own version of the same thought:
+  </p>
+
+  <p>
+    Often, It manifest as "If I just buy the next thing, then I'll finally be able to do the thing I wanted to do in the first place."
+  </p>
+
+  <p>
+    And - Sometimes that's true.
+  </p>
+
+  <p>
+    But, often - All you've done is purchased a new category of maintenance.
+  </p>
+
+  <p>
+    The additional server needs updates and backups and monitoring and replacement drives.
+  </p>
+
+  <p>
+    The additional camera body needs batteries and chargers and accessories and sensor cleanings and eventually repairs.
+  </p>
+
+  <p>
+    The additional Comp-Car needs tires and bearings and fluids and trailer space and storage and all of the invisible costs that quietly attach themselves to objects once those objects enter your life.
+  </p>
+
+  <p>
+    The purchase price is often the cheapest part of ownership.
+  </p>
+
+  <p>
+    Everything after that is a subscription service run by reality itself.
+  </p>
+
+  <h2>What This Means For People</h2>
+
+  <p>
+    I think this matters outside of technology because the same instinct shows up everywhere else.
+  </p>
+
+  <p>
+    We assume that if a solution feels too simple then we probably haven't found the real answer yet. "Surely there must be another layer to it".
+  </p>
+
+  <p>
+    If your finances are a mess, surely the answer is a budgeting platform with predictive analytics, machine learning categorization, bank integrations, and enough dashboards to launch a satellite (*cough* RocketMoney *cough*).
+  </p>
+
+  <p>
+    It would be deeply inconvenient if the answer turned out to be "look at your bank account more often."
+  </p>
+
+  <p>
+    If you're struggling to stay organized, surely the answer is a second-brain system involving bidirectional links, graph views, and various knowledge management methodologies.
+
+  <p>
+    It would be embarrassing if the answer was a notebook.
+  </p>
+
+  <p>
+    As I have aged, i have realized that complicated solutions just feel smarter. They feel more professional, and more serious, and thus, more deserving of respect.
+  </p>
+
+  <p>
+    Simple solutions feel temporary, and amateur, and incomplete - and that "Can't be the right answer".
+  </p>
+
+  <p>
+    People will proudly explain a seven-stage workflow involving four applications and an API integration. But, nobody wants to stand up and announce that they solved the problem with a legal pad and a damn good pen.
+  </p>
+
+  <div class="callout info">
+    <div class="callout-label">The Question</div>
+    <p>
+      Am I solving the problem, or am I purchasing a more interesting version of the problem? Those are not always the same thing. Sometimes they aren't even particularly close.
+    </p>
+  </div>
+
+<h2>When New Things Actually Are Better</h2>
+
+<p>
+  To be very clear - this isn't an argument against new things.
+</p>
+
+<p>
+  Lots new things are genuinely better.
+</p>
+
+<p>
+  Fuel injection is better than carburetors.
+</p>
+
+<p>
+  SSDs are better than #SpinnyStorage for most people.
+</p>
+
+<p>
+  Modern insulin pumps are better than what came before them by a margin that is imposible to overstate.
+</p>
+
+<p>
+  The interesting thing is that actual progress usually doesn't spend very much time requiring explaination on why it exists. When something is dramatically better, reality tends to do most of the marketing.
+</p>
+
+<h2>But, Sometimes "Better" Isn't the Point</h2>
+
+<p>
+  I havr to admit to something here -
+</p>
+
+<p>
+  If I argued that you should always pick the simplest or most practical solution, I'd be the world's biggest hypocrite.
+</p>
+
+<p>
+  I've often convinced people to install Linux when a native OS would have been easier.
+</p>
+
+<p>
+  I've built a home server that could have been replaced by paying someone else ten bucks a month (X5).
+</p>
+
+<p>
+  I've dumped entirely too much money into a ten-year-old 3D printer that has little-to-no business still existing.
+</p>
+
+<p>
+  None of those decisions make much sense if your only goal is getting something done, but in these cases? That just wasn't the goal.
+</p>
+
+<p>
+  In my life, often the point is seeing if you can make it work.
+</p>
+
+<p>
+  Sometimes the point is understanding how something works instead of just using it.
+</p>
+
+<p>
+  "And there aint a damn thing wrong with that".
+</p>
+
+<p>
+  IMO - The mistake is forgetting which game you're playing.
+</p>
+
+<p>
+  Running Linux because you enjoy Linux is one thing - Telling your grandmother to install Linux because it's "objectively better" is something else entirely.
+</p>
+
+<p>
+  Rebuilding an old printer because you enjoy the challenge is one thing - Recommending the same path to someone who just wants to print a replacement dishwasher knob is another.
+</p>
+
+<p>
+  When those aren't the same problem, they shouldn't have the same answer.
+</p>
+
+<h2>The Question Worth Asking</h2>
+
+<p>
+  What i have learned, is that the trick isn't rejecting new things.
+</p>
+
+<p>
+  And the trick (definitely) isn't worshipping the old ones either.
+</p>
+
+<p>
+  The question is knowing what you're actually trying to accomplish.
+</p>
+
+<p>
+  - Are you trying to solve a problem?
+  - Or are you trying to see where the rabbit hole goes?
+</p>
+
+<p>
+  They are both perfectly good reasons to do something.
+</p>
+
+<p>
+  They just shouldn't be confused with each other.
+</p>
+
+<p>
+  TL;DR - If I had my way, I would have some unfortunate news for an awful lot of marketing departments.
+</p>
+
+</div>
+
+<footer>
+  © 2026 Fisher Armstrong <br>
+  Built & Maintained by @FishTankTech
+</footer>
+
+</body>
+</html>
